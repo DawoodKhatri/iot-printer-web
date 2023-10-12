@@ -25,6 +25,7 @@ export default function Home() {
     <main>
       <div className="p-5">
         <h1 className="text-center text-6xl font-bold">Iot - Printer</h1>
+    <h3>upload your files here</h3>
       </div>
       <div className="p-5 text-center">
         <input type="file" onChange={handleFile} />
