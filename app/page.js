@@ -2,6 +2,11 @@
 import { useState } from "react";
 
 export default function Home() {
+  const bgImages = [
+    "https://www.iotinsider.com/wp-content/uploads/2023/01/IoT-Juniper-Research-5G-IoT-expansion-main-pr-Jan-23.png",
+    "https://www.kmccontrols.com/wp-content/uploads/2023/03/Unlocking-the-Future-of-Smart-Buildings-with-IoT-and-Automation-Blog-Image-scaled.jpeg",
+  ];
+
   const [file, setFile] = useState();
 
   const handleFile = async ({
@@ -29,44 +34,66 @@ export default function Home() {
     <main
       className="bg-cover bg-center bg-no-repeat relative h-screen flex justify-center items-center"
       style={{
-        backgroundImage:
-          "url('https://www.iotinsider.com/wp-content/uploads/2023/01/IoT-Juniper-Research-5G-IoT-expansion-main-pr-Jan-23.png')",
+        backgroundImage: `url('${bgImages[1]}')`,
       }}
     >
-      <div className="p-20 flex flex-col items-center bg-white border border-opacity-10 bg-opacity-5 rounded-lg shadow-5xl b  backdrop-filter backdrop-blur-lg overflow-hidden relative z-10">
-        <h1 className="text-5xl md:text-7xl font-extrabold text-gradient bg-clip-text text-transparent mb-4">
-          <span className="text-white">IOT - Printer</span>
+      <div className="p-16 flex flex-col items-center bg-black border border-opacity-10 bg-opacity-5 rounded-lg shadow-5xl b  backdrop-filter backdrop-blur-sm overflow-hidden relative z-10">
+        <h1 className="text-5xl md:text-7xl font-extrabold text-gradient bg-clip-text text-transparent mb-8">
+          <span className="text-white drop-shadow-xl">IOT - Printer</span>
         </h1>
-        <h3 className="text-lg text-white mb-6">Upload your files here</h3>
-        <div className="mb-4">
-          <label htmlFor="file-upload" className="cursor-pointer">
-            <input
-              type="file"
-              id="file-upload"
-              accept=".pdf,.doc,.docx"
-              onChange={handleFile}
-              className="hidden"
-            />
-            <div className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition duration-300">
-              Choose a File
-            </div>
-          </label>
-        </div>
-        {file && (
+        {!file ? (
           <>
-            <div className="text-gray-700 mb-6">
-              <span className="text-white font-bold mr-2">{file.name}</span>
+            <h3 className="text-xl text-white mb-6 drop-shadow-2xl">
+              Upload your files here
+            </h3>
+            <div>
+              <label htmlFor="file-upload" className="w-fit cursor-pointer">
+                <input
+                  type="file"
+                  id="file-upload"
+                  accept=".pdf"
+                  onChange={handleFile}
+                  className="hidden"
+                />
+                <div className="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-orange-600 transition duration-300">
+                  Choose a File
+                </div>
+              </label>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="flex items-center p-4 rounded-lg border mb-6">
+              <div className="mx-3 text-xl font-bold text-white drop-shadow-2xl">
+                {file.name}
+              </div>
+
               <button
+                className="bg-red-500 text-white rounded-lg inline-flex items-center justify-center h-6 w-6 hover:bg-red-600"
                 onClick={handleClearFile}
-                className="bg-red-600 text-white p-2 rounded-md "
               >
-                Clear
+                <svg
+                  className="w-2 h-2"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 14"
+                >
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                  />
+                </svg>
               </button>
             </div>
+
             <button
               className={`${
                 file ? "bg-orange-500 hover:bg-orange-600" : "bg-orange-400"
-              } text-white px-4 py-2 rounded-md transition duration-300 cursor-pointer`}
+              } text-white px-4 py-2 rounded-md transition duration-300`}
               onClick={handlePrint}
               disabled={!file}
             >
@@ -84,7 +111,7 @@ export default function Home() {
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.5); /* Adjust the alpha value to control opacity */
+            background: rgba(0, 0, 0, 0.3); /* Adjust the alpha value to control opacity */
           }
         `}
       </style>
