@@ -26,14 +26,14 @@ export default function Home() {
     });
   };
   return (
-    <div className="p-16 flex flex-col items-center bg-black border border-opacity-10 bg-opacity-5 rounded-xl shadow-5xl b  backdrop-filter backdrop-blur-sm overflow-hidden relative z-10">
-      <h1 className="text-5xl md:text-7xl font-extrabold text-gradient bg-clip-text text-transparent mb-8">
+    <div className="mx-4 p-8 md:p-12 text-center flex flex-col items-center bg-black border border-opacity-10 bg-opacity-5 rounded-xl shadow-5xl backdrop-filter backdrop-blur-sm max-h-[calc(100vh-2rem)] overflow-hidden relative z-10">
+      <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-gradient bg-clip-text text-transparent mb-8">
         <span className="text-white drop-shadow-xl">IOT - Printer</span>
       </h1>
       {!file ? (
         <>
-          <h3 className="text-xl text-white mb-6 drop-shadow-2xl">
-            Upload your files here
+          <h3 className="text-md md:text-xl text-white mb-6 drop-shadow-2xl">
+            Upload your file here
           </h3>
           <div>
             <label htmlFor="file-upload" className="w-fit cursor-pointer">
@@ -52,13 +52,13 @@ export default function Home() {
         </>
       ) : (
         <>
-          <div className="flex items-center p-4 rounded-lg border mb-6">
-            <div className="mx-3 text-xl font-bold text-white drop-shadow-2xl">
+          <div className="max-w-full flex flex-col sm:flex-row items-center p-4 rounded-lg border mb-6">
+            <div className="mb-3 sm:mb-0 sm:mx-3 max-w-full text-md md:text-xl font-bold text-white truncate drop-shadow-2xl">
               {file.name}
             </div>
 
             <button
-              className="bg-red-500 text-white rounded-lg inline-flex items-center justify-center h-6 w-6 hover:bg-red-600"
+              className="bg-red-500 text-white rounded-lg inline-flex items-center justify-center px-3 py-1 sm:p-2 hover:bg-red-600"
               onClick={handleClearFile}
             >
               <svg
@@ -70,12 +70,13 @@ export default function Home() {
               >
                 <path
                   stroke="currentColor"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
                 />
               </svg>
+              <span className="text-sm ml-2 sm:hidden">Cancel</span>
             </button>
           </div>
 

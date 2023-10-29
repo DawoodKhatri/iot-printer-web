@@ -25,14 +25,14 @@ const AdminPage = () => {
   };
   return (
     <>
-      <div className="mx-8 w-full sm:w-2/3 md:w-1/2 lg:w-1/3 py-6 px-10 flex flex-col items-center bg-black border border-opacity-10 bg-opacity-5 rounded-xl shadow-5xl b  backdrop-filter backdrop-blur-sm max-h-[calc(100vh-2rem)] overflow-y-auto relative z-10">
-        <h1 className="text-4xl font-extrabold text-white drop-shadow-xl mb-6">
+      <div className="mx-4 w-full sm:w-2/3 md:w-1/2 lg:w-1/3 px-8 py-6 md:px-12 flex flex-col items-center bg-black border border-opacity-10 bg-opacity-5 rounded-xl shadow-5xl backdrop-filter backdrop-blur-sm max-h-[calc(100vh-2rem)] overflow-y-auto relative z-10">
+        <h1 className="text-3xl lg:text-4xl font-extrabold text-white text-center drop-shadow-xl mb-6">
           SERVER CONFIG
         </h1>
         <form className="w-full" onSubmit={handleSubmit}>
-          <div className="flex gap-8 mb-4">
+          <div className="flex gap-3 sm:gap-8 mb-4">
             <button
-              className={`text-white font-medium rounded-lg p-2 flex-1
+              className={`text-sm sm:text-base text-white font-medium rounded-lg p-2 flex-1
                ${
                  configType === "aws-credentials"
                    ? "bg-orange-500 hover:bg-orange-600 border-none"
@@ -45,7 +45,7 @@ const AdminPage = () => {
               AWS Credentials
             </button>
             <button
-              className={`text-white font-medium rounded-lg p-2 flex-1
+              className={`text-sm sm:text-base text-white font-medium rounded-lg p-2 flex-1
                ${
                  configType === "aws-iot"
                    ? "bg-orange-500 hover:bg-orange-600 border-none"
@@ -67,7 +67,7 @@ const AdminPage = () => {
                 <input
                   type="text"
                   name="accessKeyId"
-                  className="bg-transparent border outline-none text-white text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5"
+                  className="bg-transparent border outline-none text-white text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-1.5   sm:p-2.5"
                   placeholder="Enter Access Key Id"
                   required
                 />
@@ -79,7 +79,7 @@ const AdminPage = () => {
                 <input
                   type="text"
                   name="secretAccessKey"
-                  className="bg-transparent border outline-none text-white text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5"
+                  className="bg-transparent border outline-none text-white text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-1.5   sm:p-2.5"
                   placeholder="Enter Secret Access Key"
                   required
                 />
@@ -91,7 +91,7 @@ const AdminPage = () => {
                 <input
                   type="text"
                   name="sessionToken"
-                  className="bg-transparent border outline-none text-white text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5"
+                  className="bg-transparent border outline-none text-white text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-1.5   sm:p-2.5"
                   placeholder="Enter Session Token"
                   required
                 />
@@ -106,7 +106,7 @@ const AdminPage = () => {
                 <textarea
                   rows={1}
                   name="privateKey"
-                  className="bg-transparent border outline-none text-white text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5"
+                  className="bg-transparent border outline-none text-white text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-1.5   sm:p-2.5"
                   placeholder="Enter Private Key"
                   required
                 />
@@ -118,7 +118,7 @@ const AdminPage = () => {
                 <textarea
                   rows={1}
                   name="caCert"
-                  className="bg-transparent border outline-none text-white text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5"
+                  className="bg-transparent border outline-none text-white text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-1.5   sm:p-2.5"
                   placeholder="Enter Ca Cert"
                   required
                 />
@@ -130,7 +130,7 @@ const AdminPage = () => {
                 <textarea
                   rows={1}
                   name="clientCert"
-                  className="bg-transparent border outline-none text-white text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5"
+                  className="bg-transparent border outline-none text-white text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-1.5   sm:p-2.5"
                   placeholder="Enter Client Cert"
                   required
                 />
@@ -142,7 +142,7 @@ const AdminPage = () => {
                 <input
                   type="text"
                   name="host"
-                  className="bg-transparent border outline-none text-white text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5"
+                  className="bg-transparent border outline-none text-white text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-1.5   sm:p-2.5"
                   placeholder="Enter Host"
                   required
                 />
@@ -157,12 +157,12 @@ const AdminPage = () => {
             <input
               type="password"
               name="password"
-              className="bg-transparent border outline-none text-white text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5"
+              className="bg-transparent border outline-none text-white text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-1.5   sm:p-2.5"
               placeholder="Enter Password"
               required
             />
           </div>
-          <button className="mt-4 w-full font-medium text-white bg-orange-500 hover:bg-orange-600 rounded-lg h-10 transition-all duration-300">
+          <button className="mt-2 sm:mt-4 w-full font-medium text-white bg-orange-500 hover:bg-orange-600 rounded-lg h-10 transition-all duration-300">
             Update
           </button>
         </form>

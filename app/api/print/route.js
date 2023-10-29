@@ -13,7 +13,6 @@ export const POST = async (req) => {
     const fileExtension = file.name.split(".")[file.name.split(".").length - 1];
     console.log(file.name, file.size, file.type);
     const fileBuffer = Buffer.from(await file.arrayBuffer());
-    console.log(fileBuffer);
 
     const uploadParams = {
       Bucket: "iot-printer-files",
