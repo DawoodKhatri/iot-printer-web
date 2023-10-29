@@ -1,12 +1,17 @@
 "use client";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const AdminPage = () => {
   const [configType, setConfigType] = useState("aws-credentials");
-  const tabActive = "";
-  const tabInActive = "";
+
+  const showToast = (type, message) => {
+    toast.dismiss();
+    toast[type](message);
+  };
 
   const handleSubmit = async (e) => {
+    showToast("loading", "Updating Server Config");
     e.preventDefault();
     let fields = Object.fromEntries(new FormData(e.target).entries());
     fields["type"] = configType;
@@ -19,8 +24,9 @@ const AdminPage = () => {
 
     if (response.success) {
       e.target.reset();
+      showToast("success", "Server Config Updated");
     } else {
-      alert(response.message);
+      showToast("error", response.message);
     }
   };
   return (

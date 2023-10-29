@@ -1,7 +1,7 @@
 import AWSIoTData from "aws-iot-device-sdk";
 
 export const AWSIoTClient = async (clientId) => {
-  let request = await fetch(`${process.env.APP_URL}/api/admin/aws-iot`);
+  let request = await fetch(`${process.env.APP_URL ?? ""}/api/admin/aws-iot`);
   request = await request.json();
 
   if (request.success) {
@@ -19,7 +19,9 @@ export const AWSIoTClient = async (clientId) => {
 };
 
 export const AWSCredentials = async () => {
-  let request = await fetch(`${process.env.APP_URL}/api/admin/aws-credentials`);
+  let request = await fetch(
+    `${process.env.APP_URL ?? ""}/api/admin/aws-credentials`
+  );
   request = await request.json();
 
   if (request.success) {

@@ -33,7 +33,7 @@ export const POST = async (req) => {
   } catch (error) {
     console.log(error);
     return NextResponse.json(
-      { success: false, message: error.message },
+      { success: false, message: "Internal Server Error" },
       { status: 500 }
     );
   }

@@ -1,8 +1,16 @@
 "use client";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 export default function Home() {
+  // const userId = String(new Date().getTime());
+
   const [file, setFile] = useState();
+
+  const showToast = (type, message) => {
+    toast.dismiss();
+    toast[type](message);
+  };
 
   const handleFile = async ({
     target: {
@@ -10,21 +18,33 @@ export default function Home() {
     },
   }) => {
     setFile(file);
+    showToast("success", "File Selected");
   };
 
   const handleClearFile = () => {
     setFile(null);
+    showToast("success", "File Removed");
   };
 
   const handlePrint = async () => {
+    showToast("loading", "Uploading File");
     const formData = new FormData();
     formData.append("file", file);
 
-    const response = await fetch("/api/print", {
+    let response = await fetch("/api/print", {
       method: "POST",
       body: formData,
     });
+
+    response = await response.json();
+
+    if (response.success) {
+      showToast("loading", "File Submitted for Printing");
+    } else {
+      showToast("error", response.message);
+    }
   };
+
   return (
     <div className="mx-4 p-8 md:p-12 text-center flex flex-col items-center bg-black border border-opacity-10 bg-opacity-5 rounded-xl shadow-5xl backdrop-filter backdrop-blur-sm max-h-[calc(100vh-2rem)] overflow-hidden relative z-10">
       <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-gradient bg-clip-text text-transparent mb-8">
