@@ -1,15 +1,15 @@
 import AWSIoTData from "aws-iot-device-sdk";
 
 export const AWSIoTClient = async (clientId) => {
-  let request = await fetch("http://localhost:3000/api/admin/aws-iot");
+  let request = await fetch(`${process.env.APP_URL}/api/admin/aws-iot`);
   request = await request.json();
 
   if (request.success) {
     const { privateKey, caCert, clientCert, host } = request.data;
     return AWSIoTData.device({
-      privateKey: Buffer.from(privateKey,"base64"),
-      caCert: Buffer.from(caCert,"base64"),
-      clientCert: Buffer.from(clientCert,"base64"),
+      privateKey: Buffer.from(privateKey, "base64"),
+      caCert: Buffer.from(caCert, "base64"),
+      clientCert: Buffer.from(clientCert, "base64"),
       host,
       clientId,
     });
@@ -19,7 +19,7 @@ export const AWSIoTClient = async (clientId) => {
 };
 
 export const AWSCredentials = async () => {
-  let request = await fetch("http://localhost:3000/api/admin/aws-credentials");
+  let request = await fetch(`${process.env.APP_URL}/api/admin/aws-credentials`);
   request = await request.json();
 
   if (request.success) {
