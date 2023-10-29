@@ -4,9 +4,9 @@ import { NextResponse } from "next/server";
 
 export const POST = async (req) => {
   try {
-    const client = AWSIoTClient("test_client_1");
+    const client = await AWSIoTClient("test_client_1");
 
-    const s3 = new S3({ credentials: AWSCredentials, region: "us-east-1" });
+    const s3 = new S3({ credentials: await AWSCredentials(), region: "us-east-1" });
 
     const form = await req.formData();
     const file = form.get("file");
