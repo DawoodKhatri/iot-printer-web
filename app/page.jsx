@@ -39,7 +39,7 @@ export default function Home() {
     response = await response.json();
 
     if (response.success) {
-      showToast("loading", "File Submitted for Printing");
+      showToast("success", "File Submitted for Printing");
     } else {
       showToast("error", response.message);
     }
